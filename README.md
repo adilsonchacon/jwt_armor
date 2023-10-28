@@ -52,7 +52,13 @@ config = %JwtArmor.Config{
 #### Fourth: validate tokens
 
 ```
-{ok, validated_claims} = JwtArmor.validate(config, verified_claims)
+{ok, validated_claims} = JwtArmor.validate(config.claims, verified_claims)
+```
+
+#### Fifth: verify and validate tokens
+
+```
+{ok, claims} = JwtArmor.verify_and_validate(token, config)
 ```
 
 ## License
