@@ -1,13 +1,16 @@
 defmodule JwtArmor.MixProject do
   use Mix.Project
 
-  # @source_url "https://github.com/adilsonchacon/jwt_armor"
+  @source_url "https://github.com/adilsonchacon/jwt_armor"
   @version "0.1.0"
 
   def project do
     [
       app: :jwt_armor,
       version: @version,
+      source_url: @source_url,
+      description: description(),
+      package: package(),
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -31,7 +34,21 @@ defmodule JwtArmor.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:joken, "~> 2.5"},
       {:jason, "~> 1.3"},
-      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false}
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+    ]
+  end
+
+  defp description() do
+    "JwtArmor wraps the Joken package and make it simpler more secure to use."
+  end
+
+  defp package() do
+    [
+      name: "jwt_armor",
+      files: ~w(lib mix.exs README.md LICENSE config),
+      licenses: ["MIT"],
+      links: %{"GitHub" => @source_url}
     ]
   end
 end
